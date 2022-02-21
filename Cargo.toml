@@ -1,0 +1,40 @@
+[package]
+name = "grpc-framework"
+version = "0.2.0"
+authors = ["David DiMaria <info@collectivesessions.com>"]
+description = "A Rust gRPC framework built with Tonic"
+readme = "README.md"
+keywords = ["grpc", "tonic", "framework", "prost"]
+repository = "https://github.com/ddimaria/rust-grpc-framework"
+documentation = "https://docs.rs/grpc-framework"
+license = "MIT"
+edition = "2018"
+
+[lib]
+name = "grpc_framework"
+path = "src/lib.rs"
+
+[[bin]] 
+name = "example"
+path = "examples/src/main.rs"
+
+[dependencies]
+dotenv = "0.15.0"
+envy = "0.4"
+lazy_static = "1.4.0"
+log = "0.4.14"
+prost = "0.9"
+serde = "1.0.136"
+serde_derive = "1.0.136"
+thiserror = "1.0"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+tonic = "0.6"
+tonic-health = "0.5"
+tonic-web = "0.2"
+
+[build-dependencies]
+tonic-build = "0.6"
+
+[dev-dependencies]
+
+[features]

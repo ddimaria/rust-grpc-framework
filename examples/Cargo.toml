@@ -1,0 +1,16 @@
+[package]
+name = "grpc_framework_example"
+version = "0.1.0"
+authors = ["David DiMaria <info@collectivesessions.com>"]
+edition = "2018"
+
+[dependencies]
+grpc-framework = { path = "../" }
+dotenv = "0.14"
+listenfd = "0.3"
+log = "0.4"
+pretty_env_logger = "0.4.0"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+
+
+[features]
