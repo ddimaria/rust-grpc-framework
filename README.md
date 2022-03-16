@@ -14,7 +14,7 @@ other languages while attempting to maintain the performance benefits of Rust.
 - [ ] JWT Support
 - [ ] Async Caching Layer with a Simple API
 - [X] .env for Local Development
-- [ ] Integrated Application State with a Simple API
+- [X] Integrated Application State with a Simple API
 - [X] Lazy Static Config struct
 - [X] Built-in Healthcheck
 - [ ] Listeners configured for TDD
@@ -66,15 +66,17 @@ With that setup in place, you can add in the server code in `/src/main.rs`:
 
 ```rust
 use grpc_framework::error::Result;
-use grpc_framework::message::GrpcServerImpl;
 use grpc_framework::server::serve;
+    use grpc_framework::state::State;
 
 #[tokio::main]
 async fn main() -> Result<()> {
     dotenv::dotenv().ok();
     pretty_env_logger::init();
 
-    let state = GrpcServerImpl::default();
+    // we're storing String values in state, but it can be anything that
+    // fits in a hashmap
+    let state = State::<String>::new().await?;
     serve(state).await?;
 
     Ok(())
