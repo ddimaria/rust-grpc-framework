@@ -1,0 +1,23 @@
+services:
+  # server:
+  #   build:
+  #     context: .
+  #   ports:
+  #     - "50051:50051"
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     - SERVER_URL=0.0.0.0:50051
+  #     - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+  postgres:
+    image: postgres:13.0
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  postgres-data:

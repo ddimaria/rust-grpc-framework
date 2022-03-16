@@ -2,12 +2,14 @@ use crate::{
     config::CONFIG,
     error::{Error, Result},
     message::{grpc::grpc_server::GrpcServer, GrpcServerImpl},
+    state::State,
 };
+use std::marker::{Send, Sync};
 use std::net::SocketAddr;
 use tonic::transport::Server;
 use tonic_health::server::health_reporter;
 
-pub async fn serve(state: GrpcServerImpl) -> Result<()> {
+pub async fn serve<T: 'static + Send + Sync>(state: State<'static, T>) -> Result<()> {
     let addr: SocketAddr = (*CONFIG).server.parse()?;
     let grpc_service = GrpcServer::new(state);
     let (mut health_reporter, health_service) = health_reporter();

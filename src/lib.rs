@@ -4,6 +4,8 @@ extern crate lazy_static;
 extern crate serde_derive;
 
 pub mod config;
+pub mod database;
 pub mod error;
 pub mod message;
 pub mod server;
+pub mod state;

@@ -18,6 +18,9 @@ pub enum Error {
     #[error("Parse error: {0}.")]
     Parse(String),
 
+    #[error("SQLx database pool error: {0}.")]
+    DatabasePool(String),
+
     #[error("Unknown error: {0}.")]
     Unknown(String),
 }
