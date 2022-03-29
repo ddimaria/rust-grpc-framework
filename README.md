@@ -67,7 +67,7 @@ With that setup in place, you can add in the server code in `/src/main.rs`:
 ```rust
 use grpc_framework::error::Result;
 use grpc_framework::server::serve;
-    use grpc_framework::state::State;
+use grpc_framework::state::State;
 
 #[tokio::main]
 async fn main() -> Result<()> {

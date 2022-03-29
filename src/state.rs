@@ -1,5 +1,6 @@
 use crate::database::{pool, DatabasePool};
 use crate::error::Result;
+use crate::message::grpc::grpc_server::Grpc;
 use std::{collections::HashMap, sync::Arc};
 
 pub type Data<'a, T> = HashMap<&'a str, T>;
@@ -17,3 +18,5 @@ impl<'a, T> State<'a, T> {
         })
     }
 }
+
+impl<T: 'static + Send + Sync> Grpc for State<'static, T> {}
