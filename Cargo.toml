@@ -27,7 +27,7 @@ pretty_env_logger = "0.4.0"
 prost = "0.9"
 serde = "1.0.136"
 serde_derive = "1.0.136"
-sqlx = { version = "0.5", features = [ "postgres", "runtime-tokio-rustls" ] }
+sqlx = { version = "0.5", features = [ "postgres", "mysql", "sqlite", "runtime-tokio-rustls" ] }
 thiserror = "1.0"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
 tonic = "0.6"
@@ -40,3 +40,8 @@ tonic-build = "0.6"
 [dev-dependencies]
 
 [features]
+default = ["postgres"]
+mysql = []
+postgres = []
+sqlite = []
+cockroachdb = []

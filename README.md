@@ -10,7 +10,7 @@ other languages while attempting to maintain the performance benefits of Rust.
 ## Features
 
 - [X] Tonic Server
-- [ ] Multi-Database Support (CockroachDB, Postgres, MySQL, Sqlite)
+- [X] Multi-Database Support (CockroachDB, Postgres, MySQL, Sqlite)
 - [ ] JWT Support
 - [ ] Async Caching Layer with a Simple API
 - [X] .env for Local Development
@@ -54,7 +54,8 @@ authors = ["YOUR NAME <yourname@yourdomain.com>"]
 edition = "2018"
 
 [dependencies]
-grpc-framework = { path = "../" }
+grpc-framework = { path = "../", features = ["postgres"] }
+
 dotenv = "0.14"
 listenfd = "0.3"
 log = "0.4"
