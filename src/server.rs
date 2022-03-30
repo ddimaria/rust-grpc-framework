@@ -2,6 +2,7 @@ use crate::{
     config::CONFIG,
     error::{Error, Result},
     message::{grpc::grpc_server::GrpcServer, GrpcServerImpl},
+    middleware::auth::validate_token,
     state::State,
 };
 use std::marker::{Send, Sync};
@@ -11,7 +12,7 @@ use tonic_health::server::health_reporter;
 
 pub async fn serve<T: 'static + Send + Sync>(state: State<'static, T>) -> Result<()> {
     let addr: SocketAddr = (*CONFIG).server.parse()?;
-    let grpc_service = GrpcServer::new(state);
+    let grpc_service = GrpcServer::with_interceptor(state, validate_token);
     let (mut health_reporter, health_service) = health_reporter();
     health_reporter
         .set_serving::<GrpcServer<GrpcServerImpl>>()

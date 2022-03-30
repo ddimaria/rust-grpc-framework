@@ -7,5 +7,6 @@ pub mod config;
 pub mod database;
 pub mod error;
 pub mod message;
+pub mod middleware;
 pub mod server;
 pub mod state;

@@ -13,10 +13,9 @@ use dotenv::dotenv;
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
-    // pub auth_salt: String,
-    // pub database: DatabaseConnection,
-    // pub jwt_expiration: i64,
-    // pub jwt_key: String,
+    pub auth_salt: String,
+    pub jwt_expiration: i64,
+    pub jwt_key: String,
     // pub redis_url: String,
     // pub rust_backtrace: u8,
     // pub rust_log: String,
